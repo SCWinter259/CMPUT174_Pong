@@ -31,6 +31,7 @@ class Game:
         ball_velocity_y = 5
         ball_radius = 5
 
+        # set up paddles
         paddle_width = 5
         paddle_height = 40
         paddle_top = (screen_x / 2) - (paddle_height / 2)
@@ -81,3 +82,12 @@ class Ball:
 
     def draw(self):
         pass
+
+def check_collision():
+    '''
+    Checks whether the ball and either paddles have collided
+    or not. Returns 1 or 2 as of which paddle collided with the ball.
+    Ball will bounce off at the front of each paddle, but can
+    go through the sides or the back.
+    '''
+    pass
