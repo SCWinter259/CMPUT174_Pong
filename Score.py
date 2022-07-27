@@ -1,10 +1,12 @@
 import pygame
 
 class Score:
-    def __init__(self, paddle_number):
+    def __init__(self, screen, paddle):
+        self.screen = screen
         self.score = 0
         self.color = pygame.Color("white")
-        self.player = paddle_number
+        self.paddle = paddle
+        self.font = pygame.font.SysFont("", 50)
 
     def get_score(self):
         return self.score

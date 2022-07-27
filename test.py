@@ -2,6 +2,7 @@ import pygame
 import Functions
 import Ball
 import Paddle
+import Score
 
 def main():
     pygame.init()
@@ -35,6 +36,26 @@ class Game:
         paddle1_left = 30
         paddle2_left = screen_x - 30 - paddle_width
 
+        # set up and down button for each paddle
+        up1 = pygame.K_q
+        down1 = pygame.K_a
+        up2 = pygame.K_q
+        down2 = pygame.K_l
+
         self.ball = Ball(screen, screen_x, screen_y)
         self.paddle1 = Paddle(screen, paddle1_left, paddle_top)
         self.paddle2 = Paddle(screen, paddle2_left, paddle_top)
+        self.score1 = Score(screen, self.paddle1)
+        self.score2 = Score(screen, self.paddle2)
+
+    def update(self):
+        pass
+
+    def play(self):
+        pass
+
+    def handle_event(self):
+        pass
+
+    def draw(self):
+        pass
