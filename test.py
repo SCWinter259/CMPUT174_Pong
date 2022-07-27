@@ -1,5 +1,5 @@
 import pygame
-import Functions
+from Functions import check_collision
 import Ball
 import Paddle
 import Score
@@ -37,19 +37,29 @@ class Game:
         paddle2_left = screen_x - 30 - paddle_width
 
         # set up and down button for each paddle
-        up1 = pygame.K_q
-        down1 = pygame.K_a
-        up2 = pygame.K_q
-        down2 = pygame.K_l
+        self.up1 = pygame.K_q
+        self.down1 = pygame.K_a
+        self.up2 = pygame.K_q
+        self.down2 = pygame.K_l
 
         self.ball = Ball(screen, screen_x, screen_y)
         self.paddle1 = Paddle(screen, paddle1_left, paddle_top)
         self.paddle2 = Paddle(screen, paddle2_left, paddle_top)
-        self.score1 = Score(screen, self.paddle1)
-        self.score2 = Score(screen, self.paddle2)
+        self.score1 = Score(screen)
+        self.score2 = Score(screen)
 
     def update(self):
-        pass
+        self.ball.move(self.paddle1, self.paddle2)
+        self.paddle1.move(self.up1, self.down1)
+        self.paddle2.move(self.up2, self.down2)
+
+    def draw(self):
+        self.screen.fill(self.background_color) 
+        self.update()
+        self.ball.draw()
+        self.paddle1.draw()
+        self.paddle2.draw()
+        pygame.display.flip()
 
     def play(self):
         pass
@@ -57,5 +67,4 @@ class Game:
     def handle_event(self):
         pass
 
-    def draw(self):
-        pass
+main()
