@@ -121,9 +121,6 @@ def check_collision(paddle, ball):
     Returns 0 if no collision happened
     '''
     # ball collided with left (first) paddle
-    # direction: ball_velocity_x < 0
-    # position: ball_x - radius <= paddle1_left + paddle_width; 
-    #           paddle1_top + height >= ball_y - radius >= paddle1_top
     left = paddle.get_left()
     top = paddle.get_top()
     width = paddle.get_width()
@@ -132,6 +129,7 @@ def check_collision(paddle, ball):
     ball_x = ball.get_ball_x()
     ball_y = ball.get_ball_y()
     radius = ball.get
+    # ball collided with left (first) paddle
     if left == 30:
         if ((direction < 0) and (ball_x - radius <= left + width) and
             (top + height >= ball_y - radius) and (ball_y - radius >= top)):
@@ -140,4 +138,8 @@ def check_collision(paddle, ball):
             return 0
     # ball collided with right (second) paddle
     else:
-        pass
+        if ((direction > 0) and (ball_x + radius >= left) and
+            (top + height >= ball_y - radius) and (ball_y - radius >= top)):
+            return 2
+        else:
+            return 0
