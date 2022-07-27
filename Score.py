@@ -20,12 +20,14 @@ class Score:
         and change the score if any collision happened
         '''
         if ball.get_ball_x() - ball.get_radius() <= 0:
-            self.score1 = self.score1 + 1
-        elif ball.get_ball_x() + ball.get_radius() >= screen_x:
             self.score2 = self.score2 + 1
+        elif ball.get_ball_x() + ball.get_radius() >= screen_x:
+            self.score1 = self.score1 + 1
 
     def draw(self):
         left_score = self.font.render(str(self.score1), True, self.color)
         self.screen.blit(left_score, (0, 0))          
-        right_score = self.render(str(self.score2), True, self.color)
-        self.screen.blit(right_score, (465, 0))
+        right_score = self.font.render(str(self.score2), True, self.color)
+        right_rect = right_score.get_rect()
+        right_rect.right = 500
+        self.screen.blit(right_score, right_rect)
