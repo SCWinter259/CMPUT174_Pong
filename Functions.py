@@ -11,10 +11,10 @@ def check_collision(paddle, ball):
     top = paddle.get_top()
     width = paddle.get_width()
     height = paddle.get_height()
-    direction = ball.get_velocity_x()
+    direction = ball.get_ball_velocity_x()
     ball_x = ball.get_ball_x()
     ball_y = ball.get_ball_y()
-    radius = ball.get
+    radius = ball.get_radius()
     # ball collided with left (first) paddle
     if left == 30:
         if ((direction < 0) and (ball_x - radius <= left + width) and
