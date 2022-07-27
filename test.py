@@ -45,8 +45,7 @@ class Game:
         self.ball = Ball(screen, screen_x, screen_y)
         self.paddle1 = Paddle(screen, paddle1_left, paddle_top)
         self.paddle2 = Paddle(screen, paddle2_left, paddle_top)
-        self.score1 = Score(screen)
-        self.score2 = Score(screen)
+        self.score = Score(screen)
 
     def update(self):
         self.ball.move(self.paddle1, self.paddle2)
@@ -61,10 +60,16 @@ class Game:
         self.paddle2.draw()
         pygame.display.flip()
 
-    def play(self):
-        pass
-
     def handle_event(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.close_clicked = True
+
+    def play(self):
+        while not self.close_clicked:
+            self.handle_event()
+            if self.score.get_score1() <= 10 and self.score.get_score_2() <= 10:
+                self.draw()
+                self.game_clock.tick(self.FPS)
 
 main()
