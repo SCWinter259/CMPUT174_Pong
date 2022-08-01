@@ -11,3 +11,5 @@ prevent the ball from touching the left and right edge.
 - The ball will first appear in the middle of the window (and then move)
 - If the ball touches the left edge, the right player scores and vice versa.
 - Whoever gets to 10 points first win. The game will then stop.
+
+### v0.1.0
